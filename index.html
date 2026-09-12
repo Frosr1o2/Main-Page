@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="eng">
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,9 +39,6 @@
             overflow-x: hidden;
             line-height: 1.6;
             padding-top: var(--header-height);
-        }
-        a {
-            color: #05ff82
         }
         ::selection {
             background: var(--primary);
@@ -188,17 +185,16 @@
             max-width: 680px;
             flex-shrink: 0;
         }
-.hero-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    min-height: 100vh;
-}
-
-.hero-center .buttons {
-    justify-content: center;
-}
+        .hero-center {
+            justify-content: center;
+            text-align: center;
+        }
+        .hero-center .hero-content {
+            max-width: 700px;
+        }
+        .hero-center .buttons {
+            justify-content: center;
+        }
         .hero h1 {
             font-size: 76px;
             font-weight: 900;
@@ -218,6 +214,11 @@
             line-height: 1.8;
             margin-bottom: 44px;
             max-width: 560px;
+        }
+        .hero-center p {
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
         }
         .buttons {
             display: flex;
@@ -245,14 +246,6 @@
         .btn-primary:hover {
             transform: translateY(-4px);
             box-shadow: 0 12px 50px rgba(0, 184, 148, .45);
-        }
-        .hero-image {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-shrink: 0;
-            width: 440px;
-            height: 440px;
         }
         section {
             padding: 100px 80px;
@@ -293,6 +286,9 @@
             transition: var(--transition);
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
         .card::before {
             content: '';
@@ -326,15 +322,31 @@
             font-size: 15px;
             line-height: 1.7;
         }
-        .card .status {
+        .status-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: auto;
+            padding-top: 16px;
+        }
+        .status {
             display: inline-block;
-            margin-top: 16px;
             font-size: 13px;
             font-weight: 600;
             color: var(--primary);
             border: 1px solid rgba(0, 184, 148, .2);
             padding: 4px 14px;
             border-radius: 40px;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        .status a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .status:hover {
+            background: var(--primary-dim);
+            border-color: rgba(0, 184, 148, .4);
         }
         .hidden {
             opacity: 0;
@@ -388,10 +400,6 @@
             .buttons {
                 justify-content: center;
             }
-            .hero-image {
-                width: 300px;
-                height: 300px;
-            }
             section {
                 padding: 70px 40px;
             }
@@ -439,10 +447,6 @@
             .hero p {
                 font-size: 17px;
             }
-            .hero-image {
-                width: 220px;
-                height: 220px;
-            }
             section {
                 padding: 50px 24px;
             }
@@ -470,10 +474,6 @@
                 flex-direction: column;
                 width: 100%;
             }
-            .hero-image {
-                width: 170px;
-                height: 170px;
-            }
         }
     </style>
 </head>
@@ -494,15 +494,15 @@
         </button>
     </header>
 
-<section class="hero hero-center" id="home">
-    <div class="hero-content">
-        <h1>Main <span class="highlight">Page</span></h1>
-        <p>All my projects are collected here.</p>
-        <div class="buttons">
-            <a href="#projects" class="btn btn-primary">View projects ↓</a>
+    <section class="hero hero-center" id="home">
+        <div class="hero-content">
+            <h1>Main <span class="highlight">Page</span></h1>
+            <p>All my projects are collected here.</p>
+            <div class="buttons">
+                <a href="#projects" class="btn btn-primary">View projects ↓</a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <section id="projects" class="hidden">
         <span class="section-label">✦ My works</span>
@@ -512,28 +512,38 @@
             <div class="card">
                 <h3>Omnom Linux</h3>
                 <p>A hybrid Linux distribution built from scratch. It combines the best ideas from Arch, Gentoo, and NixOS.</p>
-                <span class="status">In work</span>
-                <span class="status"><a href="https://frosr1o2.github.io/OmnomOS-Omnom-linux/">Github</a></span>
+                <div class="status-row">
+                    <span class="status">In work</span>
+                    <a class="status" href="https://github.com/Frosr1o2/OmnomOS-Omnom-linux" target="_blank">Github</a>
+                    <a class="status" href="https://frosr1o2.github.io/OmnomOS-Omnom-linux/" target="_blank">Github Pages</a>
+                </div>
             </div>
             <div class="card">
                 <h3>Omexium Launcher</h3>
                 <p>Omexium is an open-source, high-performance Minecraft launcher engineered for seamless mod management, multi-account authorization, and cross-platform speed. Built to run effortlessly on Linux, macOS, Windows, BSD, and ARM architectures.</p>
-                <span class="status">In work</span>
-                <span class="status"><a href="https://github.com/Frosr1o2/Omexium/">Github</a></span>
-        </div>
+                <div class="status-row">
+                    <span class="status">In work</span>
+                    <a class="status" href="https://github.com/Frosr1o2/Omexium/" target="_blank">Github</a>
+                </div>
+            </div>
             <div class="card">
                 <h3>Html Editor</h3>
                 <p>An easy html editor</p>
-                <span class="status">Ready</span>
-                <span class="status"><a href="https://frosr1o2.github.io/Html-Editor/">Github</a></span>
-        </div>
+                <div class="status-row">
+                    <span class="status">Ready</span>
+                    <a class="status" href="https://github.com/Frosr1o2/Html-Editor" target="_blank">Github</a>
+                    <a class="status" href="https://frosr1o2.github.io/Html-Editor/" target="_blank">Github Pages</a>
+                </div>
+            </div>
             <div class="card">
                 <h3>Poorest Visuals</h3>
                 <p>A lightweight and highly customizable Minecraft 1.21.1 visuals.</p>
-                <span class="status">Ready</span>
-                <span class="status"><a href="https://github.com/Frosr1o2/Poorest-Visuals">Github</a></span>
+                <div class="status-row">
+                    <span class="status">Ready</span>
+                    <a class="status" href="https://github.com/Frosr1o2/Poorest-Visuals" target="_blank">Github</a>
+                </div>
+            </div>
         </div>
-
     </section>
 
     <section id="about" class="hidden">
@@ -541,14 +551,11 @@
         <h2>Who i am</h2>
         <p class="section-desc">Just russian developer. My name is Alexander, i don't know what i can say more...</p>
         <div class="cards">
-            </div>
             <div class="card">
-                <h3>Contacs</h3>
+                <h3>Contacts</h3>
                 <p>GitHub: Frosr1o2<br />Discord: alchemist00001<br />Email: ssst000013@gmail.com</p>
             </div>
-
         </div>
-
     </section>
 
     <footer>
@@ -563,7 +570,6 @@
     <script>
         (function() {
             'use strict';
-            // Particles
             const bg = document.getElementById('background');
             for (let i = 0; i < 45; i++) {
                 const p = document.createElement('span');
@@ -578,14 +584,11 @@
                 p.style.opacity = 0.2 + Math.random() * 0.4;
                 bg.appendChild(p);
             }
-
-            // Header scroll
             const header = document.getElementById('header');
             window.addEventListener('scroll', () => {
                 header.classList.toggle('scrolled', window.scrollY > 40);
             });
 
-            // Mobile menu
             const toggle = document.getElementById('menuToggle');
             const nav = document.getElementById('nav');
             toggle.addEventListener('click', () => {
@@ -598,8 +601,6 @@
                     nav.classList.remove('open');
                 });
             });
-
-            // Smooth scroll for nav links
             document.querySelectorAll('[data-nav]').forEach(link => {
                 link.addEventListener('click', function(e) {
                     const href = this.getAttribute('href');
@@ -618,8 +619,6 @@
                     }
                 });
             });
-
-            // Intersection Observer for animations
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -628,8 +627,6 @@
                 });
             }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
             document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
-
-            // Card hover effect
             document.querySelectorAll('.card').forEach(card => {
                 card.addEventListener('mousemove', (e) => {
                     const rect = card.getBoundingClientRect();
